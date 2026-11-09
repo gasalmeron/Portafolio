@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gabriel Salmerón · Portafolio</title>
+<meta name="description" content="Portafolio profesional de Gabriel Ángel Salmerón Hernández, Analista de Sistemas Sénior con 30 años de experiencia y especialista en migración de sistemas legacy.">
+<meta name="author" content="Gabriel Ángel Salmerón Hernández">
+<meta property="og:title" content="Gabriel Salmerón · Analista de Sistemas Sénior">
+<meta property="og:description" content="30 años en análisis, diseño, desarrollo y migración de software.">
+<meta property="og:type" content="profile">
+<meta name="theme-color" content="#1b3352">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231b3352'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' fill='%23f2b35f' text-anchor='middle'%3EGS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: portafolio de una página con barra fija; portada a dos columnas (presentación + tarjeta 1994→hoy), logros en mosaico, experiencia interactiva (lista + panel + filtro por tecnología) */
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --ink:#14212e; --muted:#566371; --line:#dbe1e8;
+  --navy:#1b3352; --navy-2:#24426a; --on-navy:#ffffff; --on-navy-muted:#bccadb;
+  --accent:#9a5a0a; --accent-bright:#f2b35f; --accent-soft:#f7ebd9; --tint:#e8eef5;
+  --legacy:#6b4f2a;
+  --f-display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1218; --surface:#141d27; --ink:#e6ebf0; --muted:#9eabb8; --line:#26333f;
+  --navy:#132438; --navy-2:#1b3150; --on-navy:#f1f4f8; --on-navy-muted:#a9b9cc;
+  --accent:#e9a24a; --accent-bright:#f2b35f; --accent-soft:#33260f; --tint:#1a2735;
+  --legacy:#d9b98c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1218; --surface:#141d27; --ink:#e6ebf0; --muted:#9eabb8; --line:#26333f;
+  --navy:#132438; --navy-2:#1b3150; --on-navy:#f1f4f8; --on-navy-muted:#a9b9cc;
+  --accent:#e9a24a; --accent-bright:#f2b35f; --accent-soft:#33260f; --tint:#1a2735;
+  --legacy:#d9b98c; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0}
+html{scroll-padding-top:calc(var(--nav-h) + 16px)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.12;text-wrap:balance}
+p{margin:0}
+ul,ol{margin:0;padding:0}
+button{font:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--accent-bright);outline-offset:3px}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:var(--on-navy);border-bottom:1px solid var(--navy-2)}
+.nav .wrap{height:var(--nav-h);display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-family:var(--f-display);font-weight:700}
+.logo span.m{width:34px;height:34px;border-radius:50%;border:2px solid var(--accent-bright);display:grid;place-items:center;font-size:13px;letter-spacing:.5px}
+.links{display:flex;gap:4px;margin-left:auto;list-style:none;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{display:block;padding:8px 12px;color:var(--on-navy-muted);text-decoration:none;font-size:14px;border-radius:4px;white-space:nowrap}
+.links a:hover{color:var(--on-navy)}
+.links a.active{color:var(--on-navy);background:var(--navy-2)}
+.theme{width:40px;height:40px;border-radius:50%;border:1px solid var(--navy-2);background:transparent;color:var(--on-navy);display:grid;place-items:center;cursor:pointer;flex:0 0 40px}
+.theme svg{width:18px;height:18px}
+
+/* Hero */
+.hero{background:var(--navy);color:var(--on-navy);overflow:hidden}
+.hero .wrap{padding-block:72px 80px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:center}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-bright)}
+.hero h1{font-size:clamp(40px,5.8vw,70px);font-weight:700;letter-spacing:-.02em;margin-top:14px}
+.hero .role{font-family:var(--f-display);font-size:clamp(18px,2vw,22px);font-weight:500;color:var(--accent-bright);margin-top:14px}
+.hero .lede{margin-top:20px;color:var(--on-navy-muted);font-size:17px;max-width:56ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:4px;font-weight:600;font-size:15px;text-decoration:none;min-height:46px}
+.btn.primary{background:var(--accent-bright);color:#1b1206}
+.btn.ghost{border:1px solid var(--navy-2);color:var(--on-navy)}
+.btn.ghost:hover{background:var(--navy-2)}
+
+.card-hero{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);padding:28px;display:flex;flex-direction:column;gap:22px}
+.span{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-mono);font-size:13px;color:var(--on-navy-muted)}
+.span b{font-family:var(--f-display);font-size:30px;color:var(--on-navy);font-weight:700}
+.bar{height:6px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0;background:linear-gradient(90deg,var(--legacy),var(--accent-bright))}
+.hstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hstat{border-top:1px solid rgba(255,255,255,.14);padding-top:12px}
+.hstat .n{font-family:var(--f-display);font-size:34px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.hstat .l{font-size:12px;color:var(--on-navy-muted);margin-top:6px;line-height:1.35}
+.evo{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;font-family:var(--f-mono);font-size:12px}
+.evo .col{display:flex;flex-direction:column;gap:6px}
+.evo span{padding:5px 8px;border:1px dashed rgba(255,255,255,.25);color:var(--on-navy-muted)}
+.evo .new span{border:1px solid var(--accent-bright);color:var(--on-navy)}
+.evo svg{width:28px;height:28px;color:var(--accent-bright)}
+
+/* Sections */
+section.block{padding-block:88px}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;max-width:720px}
+.sec-head .eyebrow{color:var(--accent)}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);font-weight:600}
+.sec-head p{color:var(--muted)}
+
+/* Achievements */
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tile{background:var(--surface);border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;gap:10px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.tile:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 30px rgba(20,33,46,.08)}
+.tile .ic{width:44px;height:44px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.tile .ic svg{width:22px;height:22px}
+.tile .k{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+.tile h3{font-size:20px;font-weight:600}
+.tile p{color:var(--muted);font-size:15px}
+
+/* Experience */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;align-items:center}
+.filters .lbl{font-size:14px;color:var(--muted);margin-right:4px}
+.chip{padding:8px 14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;cursor:pointer;font-size:14px;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.xp{display:grid;grid-template-columns:330px minmax(0,1fr);background:var(--surface);border:1px solid var(--line)}
+.roles{list-style:none;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.roles button{width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--line);padding:16px 20px;cursor:pointer;color:var(--ink);display:grid;grid-template-columns:1fr auto;gap:4px 12px;position:relative;transition:background .15s,opacity .2s}
+.roles li:last-child button{border-bottom:0}
+.roles button:hover{background:var(--tint)}
+.roles button[aria-selected="true"]{background:var(--tint)}
+.roles button[aria-selected="true"]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.roles .t{font-weight:600;font-size:15px;line-height:1.3}
+.roles .y{font-family:var(--f-mono);font-size:12px;color:var(--accent);white-space:nowrap}
+.roles .o{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.roles button.dim{opacity:.35}
+.panel{padding:34px 36px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.panel .y{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.panel h3{font-size:clamp(22px,2.6vw,28px);font-weight:600}
+.panel .o{color:var(--muted)}
+.panel ul{padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.panel li::marker{color:var(--accent)}
+.panel .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.panel .tag{font-family:var(--f-mono);font-size:12px;padding:4px 10px;background:var(--tint);color:var(--ink)}
+.pager{display:flex;gap:10px;margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.pager button{padding:8px 14px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:4px;cursor:pointer;min-height:40px}
+.pager button:disabled{opacity:.4;cursor:default}
+.now{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--surface);padding:2px 8px;margin-left:8px;vertical-align:middle}
+.panel.fade{animation:fade .25s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel.fade{animation:none}.tile{transition:none}.tile:hover{transform:none}}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px}
+.box{background:var(--surface);border:1px solid var(--line);padding:28px}
+.box h3{font-size:19px;font-weight:600;margin-bottom:18px}
+.comp{list-style:none;display:grid;gap:12px}
+.comp li{display:flex;gap:12px;align-items:center}
+.comp li span.n{font-family:var(--f-mono);font-size:12px;color:var(--accent);width:22px}
+.techgrid{display:grid;gap:18px}
+.tg h4{margin:0 0 8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-family:var(--f-mono);font-size:13px;padding:5px 10px;background:var(--tint);color:var(--ink)}
+.pill.old{background:transparent;border:1px dashed var(--legacy);color:var(--legacy)}
+.pill.learn{background:var(--accent-soft);color:var(--accent)}
+
+/* Education */
+.edu-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.edu{list-style:none;display:flex;flex-direction:column;gap:0}
+.edu li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.edu li:last-child{border-bottom:0}
+.edu .y{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.edu .t{font-weight:600}
+.edu .o{font-size:14px;color:var(--muted)}
+.certs{list-style:none;display:flex;flex-direction:column}
+.certs li{display:flex;justify-content:space-between;gap:12px;padding-block:11px;border-bottom:1px solid var(--line);font-size:15px}
+.certs li:last-child{border-bottom:0}
+.certs .y{font-family:var(--f-mono);font-size:12px;color:var(--accent);white-space:nowrap}
+.more{margin-top:14px;font-size:14px;color:var(--muted)}
+
+/* Contact */
+.contact{background:var(--navy);color:var(--on-navy)}
+.contact .wrap{padding-block:80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.contact h2{font-size:clamp(30px,4vw,46px);font-weight:700;margin-top:12px}
+.contact p.l{color:var(--on-navy-muted);margin-top:14px;max-width:44ch}
+.crows{display:flex;flex-direction:column;border-top:1px solid var(--navy-2)}
+.crow{display:grid;grid-template-columns:100px minmax(0,1fr) auto;gap:12px;align-items:center;padding-block:15px;border-bottom:1px solid var(--navy-2)}
+.crow .k{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--on-navy-muted)}
+.crow .v{overflow-wrap:anywhere;user-select:all}
+.copy{padding:8px 14px;border:1px solid var(--navy-2);background:transparent;color:var(--on-navy);border-radius:4px;cursor:pointer;font-size:13px;min-height:40px}
+footer{background:var(--navy);color:var(--on-navy-muted);font-size:13px;border-top:1px solid var(--navy-2)}
+footer .wrap{padding-block:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:56px 64px}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .xp{grid-template-columns:1fr}
+  .roles{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .roles li{flex:0 0 220px}
+  .roles button{border-bottom:0;border-right:1px solid var(--line);height:100%}
+  .roles button[aria-selected="true"]::before{top:auto;right:0;width:auto;height:4px}
+  .skills,.edu-grid,.contact .wrap{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .links{display:none}
+  .theme{margin-left:auto}
+  .bento{grid-template-columns:1fr}
+  .panel{padding:26px 20px}
+  .hstats .n{font-size:28px}
+  .crow{grid-template-columns:1fr auto}
+  .crow .k{grid-column:1/-1}
+  .edu li{grid-template-columns:1fr;gap:2px}
+  section.block{padding-block:64px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Secciones">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span class="m">GS</span>Gabriel Salmerón</a>
+    <ul class="links" id="navlinks">
+      <li><a href="#logros">Logros</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#formacion">Formación</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Analista de Sistemas Sénior</span>
+      <h1>Gabriel Ángel Salmerón Hernández</h1>
+      <p class="role">Especialista en migración de sistemas legacy</p>
+      <p class="lede">Analista de sistemas con 30 años de experiencia en análisis, diseño, desarrollo y migración de software para instituciones públicas y empresas privadas.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#experiencia">Ver experiencia</a>
+        <a class="btn ghost" href="#contacto">Contactar</a>
+      </div>
+    </div>
+    <div class="card-hero" aria-label="Resumen de trayectoria">
+      <div class="span"><span>Desde <b>1994</b></span><span>hasta <b>hoy</b></span></div>
+      <div class="bar" aria-hidden="true"><i></i></div>
+      <div class="hstats">
+        <div class="hstat"><div class="n">30</div><div class="l">años de experiencia</div></div>
+        <div class="hstat"><div class="n">32</div><div class="l">sistemas implementados</div></div>
+        <div class="hstat"><div class="n">5</div><div class="l">bases de datos migradas</div></div>
+      </div>
+      <div class="evo">
+        <div class="col"><span>Visual FoxPro</span><span>SQLWindows</span><span>Novell</span></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"></path></svg>
+        <div class="col new"><span>ASP.NET · C#</span><span>Entity Framework</span><span>SQL Server</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="logros">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Logros clave</span>
+        <h2>Resultados a lo largo de la carrera</h2>
+      </div>
+      <div class="bento">
+        <article class="tile">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"></path><path d="M14 3v5h5M9 13h7M9 17h5"></path></svg></div>
+          <span class="k">Expedientes</span><h3>Control electrónico de expedientes</h3><p>Sistema web para el registro y control electrónico de expedientes.</p>
+        </article>
+        <article class="tile">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 11h5M18.5 8.5v5"></path></svg></div>
+          <span class="k">Gestión institucional</span><h3>Gestión de RR. HH. y finanzas</h3><p>Plataforma de gestión de recursos humanos y financiera con 7 módulos.</p>
+        </article>
+        <article class="tile">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"></path><path d="M18 3v4h-4M6 21v-4h4"></path></svg></div>
+          <span class="k">Modernización</span><h3>De Visual FoxPro a la web</h3><p>Migración de aplicaciones Visual FoxPro a web ASP.NET y de 5 bases de datos a SQL Server y MySQL.</p>
+        </article>
+        <article class="tile">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 11v3M8.5 8.5a5 5 0 0 1 8.4 2.5c.3 2-.2 4.5-1.4 6.5M6.2 11.5c-.3 2.7.3 5.3 1.8 7.5M12 4a8 8 0 0 1 8 8M4 12a8 8 0 0 1 3.5-6.6"></path></svg></div>
+          <span class="k">Innovación</span><h3>Autenticación por huella digital</h3><p>Sistema con autenticación de usuarios por huella digital.</p>
+        </article>
+        <article class="tile">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18v13H3z"></path><path d="M8 7V4h8v3M3 13h18"></path></svg></div>
+          <span class="k">Consultoras</span><h3>Proyectos con firmas externas</h3><p>Infosgroup (Seguimiento de Casos) y TECNASA (SharePoint).</p>
+        </article>
+        <article class="tile">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17l-5.9 3 1.2-6.5L2.5 8.9 9.1 8z"></path></svg></div>
+          <span class="k">Liderazgo</span><h3>Líder de proyecto</h3><p>Líder de proyecto de un Sistema Integrado de Recursos Humanos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experiencia" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Experiencia profesional</span>
+        <h2>30 años de trayectoria</h2>
+        <p>Selecciona un cargo para ver el detalle, o filtra por tecnología.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por tecnología"><span class="lbl">Filtrar:</span></div>
+      <div class="xp">
+        <ul class="roles" id="roles" role="tablist" aria-label="Cargos"></ul>
+        <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="habilidades" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Habilidades</span>
+        <h2>Competencias y tecnologías</h2>
+      </div>
+      <div class="skills">
+        <div class="box">
+          <h3>Competencias clave</h3>
+          <ol class="comp">
+            <li><span class="n">01</span>Liderazgo de proyectos</li>
+            <li><span class="n">02</span>Análisis de procesos de negocio</li>
+            <li><span class="n">03</span>Arquitectura y diseño de sistemas</li>
+            <li><span class="n">04</span>Diseño de bases de datos</li>
+            <li><span class="n">05</span>Migración y modernización</li>
+            <li><span class="n">06</span>Gestión de requerimientos</li>
+            <li><span class="n">07</span>Enlace interinstitucional</li>
+          </ol>
+        </div>
+        <div class="box">
+          <h3>Tecnologías</h3>
+          <div class="techgrid">
+            <div class="tg"><h4>Plataformas destino</h4><div class="pills"><span class="pill">ASP.NET</span><span class="pill">VB.NET</span><span class="pill">C#</span><span class="pill">Entity Framework</span><span class="pill">LINQ</span><span class="pill">Java</span><span class="pill">PHP</span><span class="pill">JavaScript</span></div></div>
+            <div class="tg"><h4>Bases de datos y reportes</h4><div class="pills"><span class="pill">SQL Server</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Reporting Services</span><span class="pill">Crystal Reports</span></div></div>
+            <div class="tg"><h4>Control de versiones</h4><div class="pills"><span class="pill">Git</span><span class="pill">GitHub</span></div></div>
+            <div class="tg"><h4>Legado que domino</h4><div class="pills"><span class="pill old">Visual FoxPro</span><span class="pill old">FoxPro</span><span class="pill old">FoxBase</span><span class="pill old">dBase III Plus</span><span class="pill old">SQLWindows</span><span class="pill old">Visual Basic 6</span><span class="pill old">BBX</span><span class="pill old">MS Access</span><span class="pill old">Novell</span><span class="pill old">Windows NT</span></div></div>
+            <div class="tg"><h4>En formación</h4><div class="pills"><span class="pill learn">Flutter</span><span class="pill learn">React Native</span><span class="pill learn">TypeScript</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="formacion" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Formación</span>
+        <h2>Estudios y certificaciones</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="box">
+          <h3>Formación académica</h3>
+          <ul class="edu">
+            <li><span class="y">En curso</span><div><div class="t">TSU en Desarrollo de Software en Código Abierto</div><div class="o">ESIT</div></div></li>
+            <li><span class="y">2015</span><div><div class="t">Especialización en Aplicaciones Empresariales en Java</div><div class="o">Universidad Don Bosco, Postgrados</div></div></li>
+            <li><span class="y">2010</span><div><div class="t">Diplomado en Java</div><div class="o">ITCA</div></div></li>
+            <li><span class="y">1994 – 1996</span><div><div class="t">Técnico de Ingeniería en Sistemas</div><div class="o">CIPC</div></div></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Certificaciones</h3>
+          <ul class="certs">
+            <li><span>Proyectos Ágiles – Scrum</span><span class="y">2026</span></li>
+            <li><span>QA Testing: gestión de pruebas</span><span class="y">2026</span></li>
+            <li><span>MySQL</span><span class="y">2026</span></li>
+            <li><span>SQL Server 2008: Administración e Implementación</span></li>
+            <li><span>Microsoft .NET: VB.NET, ASP.NET, ADO.NET, .NET Framework</span></li>
+            <li><span>RUP, UML y Administración de Requerimientos</span></li>
+            <li><span>SharePoint Server 2007</span></li>
+            <li><span>Formación de Formadores I y II</span></li>
+          </ul>
+          <p class="more">Más de 30 cursos en total.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h2>Conversemos</h2>
+      <p class="l">Disponible para oportunidades en análisis de sistemas, desarrollo .NET y proyectos de migración de sistemas legacy.</p>
+    </div>
+    <div class="crows">
+      <div class="crow"><span class="k">Correo</span><span class="v" id="c1">gabriel.salmeron22@gmail.com</span><button class="copy" type="button" data-t="c1">Copiar</button></div>
+      <div class="crow"><span class="k">Teléfono</span><span class="v" id="c2">61063117</span><button class="copy" type="button" data-t="c2">Copiar</button></div>
+      <div class="crow"><span class="k">Ubicación</span><span class="v">El Salvador</span><span></span></div>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>Gabriel Ángel Salmerón Hernández</span><span>Analista de Sistemas Sénior · 2026</span></div></footer>
+
+<script>
+const ROLES=[
+ {id:"r1",y:"2024 – hoy",t:"Analista de Tecnologías de la Información",o:"Fiscalía General de la República · Dirección de Recursos Humanos",now:true,
+  b:["Líder de proyecto de un Sistema Integrado de RR. HH.","Mantenimiento, administración y soporte técnico de aplicaciones web para las unidades organizativas de RR. HH., Financiera y de Administración.","Soporte técnico institucional del sistema SAFI y enlace técnico con el Ministerio de Hacienda."],
+  tags:["Aplicaciones web","SAFI","Liderazgo"]},
+ {id:"r2",y:"2019 – 2024",t:"Técnico Informático",o:"Fiscalía General de la República · Dirección de Recursos Humanos",
+  b:["Diseño, desarrollo y despliegue de aplicaciones web para las unidades organizativas de RR. HH., Financiera y de Administración.","Soporte técnico institucional del sistema SAFI y enlace técnico con el Ministerio de Hacienda."],
+  tags:["Aplicaciones web","SAFI"]},
+ {id:"r3",y:"2015 – 2019",t:"Técnico Informático",o:"Fiscalía General de la República · Dirección Financiera",
+  b:["Diseño, desarrollo y despliegue de aplicaciones web para las unidades organizativas de RR. HH., Financiera y de Administración.","Soporte a usuarios financieros y al SAFI, y enlace con el Ministerio de Hacienda."],
+  tags:["Aplicaciones web","SAFI"]},
+ {id:"r4",y:"2001 – 2015",t:"Analista Programador",o:"Fiscalía General de la República · Gerencia de Tecnología",
+  b:["Construcción de sistemas en VB.NET/ASP.NET y Visual FoxPro.","Migración de aplicaciones cliente-servidor (VFP) a web y de 5 bases de datos a SQL Server y MySQL.","Trabajo con las consultoras Infosgroup (Seguimiento de Casos) y TECNASA (SharePoint).","Responsable de informática del Depósito de Evidencias y del soporte a usuarios."],
+  tags:["Aplicaciones web","VB.NET / ASP.NET","Visual FoxPro","SQL Server / MySQL","Migración"]},
+ {id:"r5",y:"1998 – 2001",t:"Analista Programador",o:"Fiscalía General de la República · Depósito de Evidencias",
+  b:["Desarrollo de 3 sistemas en Visual FoxPro: control de expedientes, control de evidencias y estadísticas."],
+  tags:["Visual FoxPro"]},
+ {id:"r6",y:"1995 – 1998",t:"Jefe de Centro de Cómputo",o:"Importadora, S.A.",
+  b:["Administración del ERP MCSI sobre red Novell: contabilidad, inventario, facturación y planillas.","Implementación del sistema administrativo Scorpio en Windows NT y SQLWindows.","Apoyo al departamento técnico con software industrial europeo (CVM, AR4, CIRNET SCADA)."],
+  tags:["Novell / Windows NT"]},
+ {id:"r7",y:"1994 – 1995",t:"Ejecutivo de Informática · Encargado de Cómputo",o:"Sector exportador",
+  b:["Diseño e implementación de un sistema de control de producción en Visual FoxPro que reemplazó el registro manual.","Gestión de la base de datos de socios y el soporte informático a ejecutivos."],
+  tags:["Visual FoxPro"]}
+];
+const FILTERS=["Todos","Aplicaciones web","VB.NET / ASP.NET","Visual FoxPro","SQL Server / MySQL","Migración","SAFI","Novell / Windows NT","Liderazgo"];
+let sel=0, filt="Todos";
+const rolesEl=document.getElementById("roles"),panel=document.getElementById("panel"),filtersEl=document.getElementById("filters");
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function matches(r){return filt==="Todos"||r.tags.includes(filt)}
+function renderRoles(){
+  rolesEl.innerHTML="";
+  ROLES.forEach((r,i)=>{
+    const li=el("li");const b=el("button");b.type="button";b.id="tab-"+r.id;b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",i===sel);b.tabIndex=i===sel?0:-1;
+    if(!matches(r))b.classList.add("dim");
+    b.append(el("span","t",r.t),el("span","y",r.y),el("span","o",r.o.replace("Fiscalía General de la República · ","FGR · ")));
+    b.addEventListener("click",()=>{sel=i;update()});
+    b.addEventListener("keydown",e=>{
+      if(e.key==="ArrowDown"||e.key==="ArrowRight"){e.preventDefault();sel=Math.min(ROLES.length-1,sel+1);update(true)}
+      if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();sel=Math.max(0,sel-1);update(true)}
+    });
+    li.append(b);rolesEl.append(li);
+  });
+}
+function renderPanel(){
+  const r=ROLES[sel];panel.innerHTML="";panel.classList.remove("fade");void panel.offsetWidth;panel.classList.add("fade");
+  panel.setAttribute("aria-labelledby","tab-"+r.id);
+  const h=el("h3",null,r.t);if(r.now){h.append(el("span","now","Actual"))}
+  const ul=el("ul");r.b.forEach(x=>ul.append(el("li",null,x)));
+  const tags=el("div","tags");r.tags.forEach(t=>tags.append(el("span","tag",t)));
+  const pg=el("div","pager");
+  const prev=el("button",null,"← Anterior");prev.type="button";prev.disabled=sel===0;prev.addEventListener("click",()=>{sel--;update()});
+  const next=el("button",null,"Siguiente →");next.type="button";next.disabled=sel===ROLES.length-1;next.addEventListener("click",()=>{sel++;update()});
+  pg.append(prev,next);
+  panel.append(el("span","y",r.y),h,el("p","o",r.o),ul,tags,pg);
+}
+function renderFilters(){
+  filtersEl.querySelectorAll("button").forEach(b=>b.remove());
+  FILTERS.forEach(f=>{const b=el("button","chip",f);b.type="button";b.id="f-"+f.replace(/\W+/g,"-");b.setAttribute("aria-pressed",f===filt);
+    b.addEventListener("click",()=>{filt=f;if(!matches(ROLES[sel])){const k=ROLES.findIndex(matches);if(k>=0)sel=k}update()});filtersEl.append(b)});
+}
+function update(focus){renderFilters();renderRoles();renderPanel();if(focus)document.getElementById("tab-"+ROLES[sel].id).focus()}
+update();
+
+// Copy buttons
+document.querySelectorAll(".copy").forEach(btn=>btn.addEventListener("click",()=>{
+  const e=document.getElementById(btn.dataset.t),txt=e.textContent;
+  const ok=()=>{btn.textContent="Copiado";setTimeout(()=>btn.textContent="Copiar",1500)};
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+  try{navigator.clipboard.writeText(txt).then(ok,sel)}catch(_){sel()}
+}));
+
+// Theme toggle
+const root=document.documentElement;
+try{const t=localStorage.getItem("gs-theme");if(t)root.setAttribute("data-theme",t)}catch(_){}
+document.getElementById("theme").addEventListener("click",()=>{
+  const cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  const nxt=cur==="dark"?"light":"dark";root.setAttribute("data-theme",nxt);
+  try{localStorage.setItem("gs-theme",nxt)}catch(_){}
+});
+
+// Active nav link
+const links=[...document.querySelectorAll("#navlinks a")];
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+en.target.id))}})},{rootMargin:"-40% 0px -55% 0px"});
+  ["logros","experiencia","habilidades","formacion","contacto"].forEach(id=>{const s=document.getElementById(id);if(s)io.observe(s)});
+}
+</script>
+</body>
+</html>
